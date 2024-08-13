@@ -11,6 +11,11 @@ func main() {
 
 	url := "https://books.toscrape.com/"
 
+	c.Limit(&colly.LimitRule{
+		DomainGlob:  "*",
+		Parallelism: 2,
+	})
+
 	c.OnError(func(_ *colly.Response, err error) {
 		log.Println("Something went wrong:", err)
 	})
